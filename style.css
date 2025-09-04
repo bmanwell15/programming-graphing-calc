@@ -1,0 +1,238 @@
+body {font-family: Lato}
+
+button {cursor:pointer}
+
+a {color: #000;text-decoration: none;}
+
+#x-axis, #y-axis {
+  position: absolute;
+  background-color: black;
+}
+
+#x-axis {
+  height: 2px;
+  width: 1000px;
+  left: 0;
+  bottom: 51%;
+}
+
+#y-axis {
+  height: 100vh;
+  width: 2px;
+  top: 0;
+  left: 24vw;
+}
+
+.point {
+  width: 6px;
+  height: 6px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  cursor: pointer;
+}
+.point:hover {box-shadow: 1px 1px 5px 2px rgb(0, 0, 0),-1px -1px 5px 2px rgb(0, 0, 0);}
+
+#equationBox {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 20vw;
+  height: 90vh;
+  border-right: 2px solid #777;
+  padding: 10px;
+  background-color: #fff;
+  z-index: 2;
+  overflow-y: auto;
+}
+
+.equations {
+  background-color: #eee;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.equations > input {
+  width: 90%;
+  margin: 5px 0;
+  border: none;
+  padding: 7px;
+  font-family: Source Code Pro;
+}
+
+.smallInput {
+  width: 30px
+}
+
+.equationColors {
+  width: 10px;
+  height: 30px;
+  border-radius: 10px;
+  padding: 0;margin:0;
+}
+
+#newEquationBtn {
+  position: fixed;
+  bottom: 2vh;
+  left: 11vw;
+  padding: 7px;
+  background-color: rgba(233,233,233,0.7);
+  font-size: 18px;
+  cursor: pointer;
+  border: 2px solid #888;
+}
+#newEquationBtn:hover {
+  background-color: white;
+}
+
+#hoverBox {
+  background-color: rgba(0,0,0,0.6);
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+  z-index: 100;
+  display: none;
+  padding: 10px;
+  font-size: 20px;
+  box-shadow: 5px 5px 10px grey;
+  font-family: Source Code Pro;
+}
+
+.functionsBtn, .deleteEquationBtn, .displayBtn, .errorSign {
+  width: 25px;
+  height: 25px;
+  margin-bottom: -7px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.errorSign {display:none;position:relative;left: 170px;bottom: 23px;margin-bottom: -25px}
+
+.functionsBtn:hover {background-color: #ddd}
+
+#functionsBox {
+  position: fixed;
+  left: 38vw;
+  top: 30vh;
+  width: 30vw;
+  height: 20vw;
+  background-color: #fff;
+  border: 2px solid #000;
+  z-index:10;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px 0 rgb(0,0,0),-1px 0px 5px 0 rgb(0, 0, 0);
+  overflow-y: auto;
+}
+
+.functionsBoxHeader {
+  display:flex;
+  background-color: rgb(119,247,110);
+  padding-bottom: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.functionsBoxHeader > button {
+  flex: 50%;
+  background-color: rgba(255,255,255,0.3);
+  border: none;
+  cursor: pointer;
+  margin: 15px;
+  padding: 4px;
+}
+
+.functionsElement {
+  flex: 50%;
+  background-color: #eee;
+  padding: 3px;
+  margin: 12px 25px;
+  text-align: center;
+  cursor: pointer;
+  width: 300px;
+}
+.functionsElement:hover {background-color: #ddd}
+
+.functionsCloseBtn {
+  flex: 20%;
+  font-size: 28px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-family: ABeeZee;
+}
+
+.equationsHeader {
+  background-color: #ccd;
+  width: 20vw;
+  height: 4vh;
+  padding:10px;
+  position: fixed;
+  left: 0;top:0;
+  border-right: 2px solid #777;
+  display: flex;
+}
+
+.equationsHeader > img, #varBtn {
+  width: 30px;
+  height: 30px;
+  margin: -8px 5px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+#varBtn {
+  text-align: center;
+  font-family: Aladin;
+  letter-spacing: 2px;
+  font-size: 25px;
+  padding: 5px 0;
+  width: 45px;
+}
+
+.equationsHeader > img:hover, #varBtn:hover {
+  background-color: #bbb;
+}
+
+#toolsDropBox, #varDropBox {
+  position: fixed;
+  top: 3vw;
+  left: 1vw;
+  background-color: #fff;
+  width: 10vw;
+  border: 2px solid #000;
+  z-index: 10;
+}
+
+.zoomBtn {
+  margin-top: 5px;
+}
+
+#toolsDropBox > p {
+  margin: 0;
+  font-size: 13px;
+  padding: 3px;
+  cursor: pointer;
+}
+
+#toolsDropBox > p:hover {
+  background-color: #ddd;
+}
+
+#varDropBox {
+  font-family: Source Code Pro;
+  background-color: #ddd;
+}
+
+#varDropBox > input {
+  width: 50px;
+  margin: 5px 0;
+  border: none;
+  padding: 7px;
+  font-family: Source Code Pro;
+  border-radius: 5px;
+}
+
+#varDropBox > label {
+  margin-left: 5px;
+}

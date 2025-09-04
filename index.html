@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Programming Graphing Calculator</title>
+    
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=ABeeZee" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source Code Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Aladin" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./circumvent.js"></script>
+    
+    <script src="./functions.js"></script>
+    <script src="./images.js"></script>
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <div id="y-axis"></div>
+    <div id="x-axis"></div>
+    <div id="hoverBox"></div>
+    
+    <div id="equationBox">
+      <div class="equationsHeader">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAABLklEQVR4Xu2UsUoDQRRFHxgFSZFGrKN9KlOmtLBMYWXnB0QLGwlY+AUhCH6AWIhYW6bSykYb+3yDhYUBvcPMw+EajQy7mVfMgQO77+3AaWZF8rAOGzy0wgo84KElzuEOD63Qgc88tMQdvOShFbbgDB7zwgoD+AkPeWGFW/GBJ7ywwoP4wBteWOFRfOAb3KCdCa7FBzqvaJeNfvS8L9+BTve7WYv28+jyoErG4kNG4X0VPoWZOoVD2INtuA334Bm8h7vuYB1onKqRbfhKO/YdXsCWP1I9HMeRTXgKX+BH2LmLMwnzzfBdLfwWx5FZWBSnxhdnafw3zn23dEpcKiUulRKXSolLpcSlUuJSKXGplLhUTMc5juRnDJstTvkrMnucMi/STJwSR5qLU1ykmbgvGBIZOBcsqJ0AAAAASUVORK5CYII=" title="tools" id="toolsBtn">
+        <div id="varBtn"><i>var</i></div>
+      </div>
+      <button id="newEquationBtn" onclick="createEquation()">New Equation</button>
+    </div>
+    
+    <div id="toolsDropBox">
+      <button class="zoomBtn" onclick="zoom(-1)" style="margin-left: 15%">-</button>
+      <label style="font-family: Source Code Pro">zoom</label>
+      <button class="zoomBtn" onclick="zoom(1)">+</button>
+      <hr>
+      <p><a href="" target="_blank">Translate Function</a></p>
+    </div>
+    
+    <div id="varDropBox">
+      <label>a = </label><input id="varA" type="number" value="0"><br>
+      <label>b = </label><input id="varB" type="number" value="0"><br>
+      <label>c = </label><input id="varC" type="number" value="0"><br>
+      <label>d = </label><input id="varD" type="number" value="0"><br>
+    </div>
+    
+    <div id="functionsBox">
+      <div class="functionsBoxHeader">
+        <button id="basicFunctionsBtn" onclick="switchFunctions(1)">Basic Functions</button>
+        <button id="otherFunctionsBtn" onclick="switchFunctions(2)">Other Functions</button>
+        <button id="varFunctionsBtn" onclick="switchFunctions(3)">Variables</button>
+        <div class="functionsCloseBtn" onclick="showFunctions(0)">X</div>
+      </div>
+      <div id="basicFunctionsBox">
+        <div style="display:flex">
+          <div class="functionsElement" onclick="addFunction('sqrt')">&Sqrt;<i>x</i></div>
+          <div class="functionsElement" onclick="addFunction('cbrt')">&#8731;<i>x</i></div>
+          <div class="functionsElement" onclick="addFunction('abs')">|<i>x</i>|</div>
+        </div>
+        <div style="display:flex">
+          <div class="functionsElement" onclick="addFunction('sin')">sin(<i>x</i>)</div>
+          <div class="functionsElement" onclick="addFunction('cos')">cos(<i>x</i>)</div>
+          <div class="functionsElement" onclick="addFunction('tan')">tan(<i>x</i>)</div>
+        </div>
+        <div style="display:flex">
+          <div class="functionsElement" onclick="addFunction('asin')">asin(<i>x</i>)</div>
+          <div class="functionsElement" onclick="addFunction('acos')">acos(<i>x</i>)</div>
+          <div class="functionsElement" onclick="addFunction('atan')">atan(<i>x</i>)</div>
+        </div>
+        <div style="display:flex">
+          <div class="functionsElement" onclick="addFunction('log10')">log(<i>x</i>)</div>
+          <div class="functionsElement" onclick="addFunction('loge')">log<sub>e</sub>(<i>x</i>)</div>
+          <div class="functionsElement" onclick="addFunction('log2')">log<sub>2</sub>(<i>x</i>)</div>
+        </div>
+        <div style="display:flex">
+          <div class="functionsElement" onclick="addFunction('factor')">x!</div>
+          <div class="functionsElement" style="background-color: transparent;cursor:auto"></div>
+          <div class="functionsElement" style="background-color: transparent;cursor:auto"></div>
+        </div>
+      </div>
+      <div id="otherFunctionsBox">
+        <div style="display:flex">
+          <div class="functionsElement" onclick="addFunction('round')">round()</div>
+          <div class="functionsElement" onclick="addFunction('floor')">floor(<i>x</i>)</div>
+          <div class="functionsElement" onclick="addFunction('ceil')">ceil(<i>x</i>)</div>
+        </div>
+        <div style="display:flex">
+          <div class="functionsElement" onclick="addFunction('sign')">sign(<i>x</i>)</div>
+          <div class="functionsElement" onclick="addFunction('sum')">sum(<i>list</i>)</div>
+          <div class="functionsElement" onclick="addFunction('adv')">adverage(<i>list</i>)</div>
+        </div>
+        <div style="display:flex">
+          <div class="functionsElement" onclick="addFunction('max')">max(<i>list</i>)</div>
+          <div class="functionsElement" onclick="addFunction('min')">min(<i>list</i>)</div>
+          <div class="functionsElement" onclick="addFunction('random')">random()</div>
+        </div>
+        
+      </div>
+      <div id="varFunctionsBox">
+        <div style="display:flex">
+          <div class="functionsElement" onclick="addFunction('pi')">π</div>
+          <div class="functionsElement" onclick="addFunction('e')"><i>e</i></div>
+          <div class="functionsElement" onclick="addFunction('sqrt-2')">&Sqrt;<i><b>2</b></i></div>
+        </div>
+        <div style="display:flex">
+          <div class="functionsElement" onclick="addFunction('sqrt-0.5')">&Sqrt;<i><b>&frac12;</b></i></div>
+          <div class="functionsElement" onclick="addFunction('nl-2')">ln(<i><b>2</b></i>)</div>
+          <div class="functionsElement" onclick="addFunction('nl-10')">ln(<i><b>10</b></i>)</div>
+        </div>
+        <div style="display:flex">
+          <div class="functionsElement" onclick="addFunction('log-2e')">log<sub>2</sub>(<i><b>e</b></i>)</div>
+          <div class="functionsElement" onclick="addFunction('log-10e')">log(<i><b>e</b></i>)</div>
+          <div class="functionsElement" style="background-color: transparent;cursor:auto"></div>
+        </div>
+      </div>
+      
+    </div>
+  </body>
+</html>
